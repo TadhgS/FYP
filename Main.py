@@ -1,5 +1,4 @@
 import nltk
-nltk.download('punkt')
 import random
 
 File = open('words.txt')
@@ -11,7 +10,7 @@ adverb = []
 useless = []
 
 for sentence in sentences:
-    for word,pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
+    for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
         if(pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS'):
             nouns.append(word)
         elif (pos == 'VB' or pos == 'VBD' or pos == 'VBG' or pos == 'VBN' or pos == 'VBZ' or pos == 'VBZ'):
@@ -21,7 +20,7 @@ for sentence in sentences:
         else:
             useless.append(word)
 
-sentence_trail = nouns[random] + verbs[random] + adverb[random]
+sentence_trail = str(nouns[random]) + str(verbs[random]) + str(adverb[random])
 
 print(sentence_trail)
 
