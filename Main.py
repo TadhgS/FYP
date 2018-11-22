@@ -1,18 +1,27 @@
 import nltk
-import random
+import numpy
 
 File = open('words.txt')
 lines = File.read()
 sentences = nltk.sent_tokenize(lines)
 nouns = []
+nounsplural = []
+propernounS = []
+propernounP = []
 verbs = []
 adverb = []
 useless = []
 
 for sentence in sentences:
     for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
-        if(pos == 'NN' or pos == 'NNP' or pos == 'NNS' or pos == 'NNPS'):
+        if(pos == 'NN'):
             nouns.append(word)
+        elif (pos == 'NNS'):
+            nounsplural.append(word)
+        elif (pos == 'NNP'):
+            propernounS.append(word)
+        elif (pos == 'NNPS'):
+            propernounP.append(word)
         elif (pos == 'VB' or pos == 'VBD' or pos == 'VBG' or pos == 'VBN' or pos == 'VBZ' or pos == 'VBZ'):
             verbs.append(word)
         elif (pos == 'RB' or pos == 'RBR' or pos == 'RBS'):
@@ -20,7 +29,8 @@ for sentence in sentences:
         else:
             useless.append(word)
 
-sentence_trail = str(nouns[random]) + str(verbs[random]) + str(adverb[random])
 
-print(sentence_trail)
+print(numpy.random.choice(propernounP) + " " + numpy.random.choice(useless) + " " + numpy.random.choice(verbs))
+
+
 
