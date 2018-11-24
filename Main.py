@@ -9,6 +9,8 @@ nounsplural = []
 propernounS = []
 propernounP = []
 verbs = []
+verbpast = []
+verb3person = []
 adverb = []
 useless = []
 
@@ -22,15 +24,19 @@ for sentence in sentences:
             propernounS.append(word)
         elif (pos == 'NNPS'):
             propernounP.append(word)
-        elif (pos == 'VB' or pos == 'VBD' or pos == 'VBG' or pos == 'VBN' or pos == 'VBZ' or pos == 'VBZ'):
+        elif (pos == 'VB' or  pos == 'VBG' or pos == 'VBN'):
             verbs.append(word)
+        elif (pos == 'VBD'):
+            verbpast.append(word)
+        elif (pos == 'VBZ' or pos == 'VBP'):
+            verb3person.append(word)
         elif (pos == 'RB' or pos == 'RBR' or pos == 'RBS'):
             adverb.append(word)
         else:
             useless.append(word)
-
-
-print(numpy.random.choice(propernounP) + " " + numpy.random.choice(useless) + " " + numpy.random.choice(verbs))
-
+for x in nouns:
+    {
+print(numpy.random.choice(nouns) + " " + numpy.random.choice(verbpast) + " " + numpy.random.choice(nounsplural))
+    }
 
 
