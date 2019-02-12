@@ -15,7 +15,6 @@ verbpast = []
 verb3person = []
 adverb = []
 useless = []
-punt = []
 
 for sentence in sentences:
     for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
@@ -35,28 +34,35 @@ for sentence in sentences:
             verb3person.append(word)
         elif (pos == 'RB' or pos == 'RBR' or pos == 'RBS'):
             adverb.append(word)
-        elif (pos == 'SYM'):
-            punt.append(word)
         else:
             useless.append(word)
+
 file = open("testfile.txt","w")
 
-for x in range(1,1000):
-    x = random.randint(0,8)
-    if(x == 1):
+for x in range(1,50):
+    if (x % 7 == 0):
+        file.write("\n")
+    y = random.randint(0,9)
+    if(y -1 == 7):
         file.write(numpy.random.choice(nouns) + " ")
-    elif(x == 2):
+    if(y == 1):
+        file.write(numpy.random.choice(nouns) + " ")
+    elif(y == 2):
         file.write(numpy.random.choice(nounsplural) + " ")
-    elif (x == 3):
+    elif (y == 3):
         file.write(numpy.random.choice(propernounP) + " ")
-    elif (x == 4):
+    elif (y == 4):
         file.write(numpy.random.choice(propernounS) + " ")
-    elif (x == 5):
+    elif (y == 5):
         file.write(numpy.random.choice(verbs) + " ")
-    elif (x == 6):
+    elif (y == 6):
         file.write(numpy.random.choice(verbpast) + " ")
-    elif (x == 7):
-        file.write(numpy.random.choice(useless) + " ")
-    elif (x == 8):
-        file.write(numpy.random.choice(useless) + " ")
-
+    elif (y == 7):
+        wordUsed = (numpy.random.choice(useless))
+        if(wordUsed != " "):
+            wordUsed == "."
+            file.write(wordUsed)
+            file.write("\n")
+        else:
+            file.write(wordUsed)
+            file.write("\n")
