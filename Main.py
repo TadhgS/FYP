@@ -1,6 +1,10 @@
 import nltk
 import numpy
 import random
+import scrapping
+
+scrapeData = scrapping()
+scrapeData()
 
 File = open('words.txt')
 lines = File.read()
@@ -45,6 +49,12 @@ for x in range(1,50):
     y = random.randint(0,9)
     if(y -1 == 7):
         file.write(numpy.random.choice(nouns) + " ")
+    if(y-1 == 1 or y-1 == 2 or y-1 ==3 or y-1 ==4):
+        y = random.randint(1,2)
+        if (y == 1):
+            file.write(numpy.random.choice(verbs) + " ")
+        elif (y == 2):
+            file.write(numpy.random.choice(verbpast) + " ")
     if(y == 1):
         file.write(numpy.random.choice(nouns) + " ")
     elif(y == 2):
