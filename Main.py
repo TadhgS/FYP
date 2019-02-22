@@ -1,10 +1,7 @@
 import nltk
 import numpy
 import random
-#import scrapping
-
-#scrapeData = scrapping()
-#scrapeData()
+import scrapping
 
 File = open('words.txt')
 lines = File.read()
@@ -20,6 +17,8 @@ verb3person = []
 adverb = []
 useless = []
 unUsedWords = []
+
+scrapping.scrape()
 
 for sentence in sentences:
     for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
