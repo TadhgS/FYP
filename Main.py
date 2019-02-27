@@ -3,6 +3,8 @@ import numpy
 import random
 import scrapping
 
+scrapping.scrape()
+
 File = open('words.txt')
 lines = File.read()
 sentences = nltk.sent_tokenize(lines)
@@ -18,7 +20,7 @@ adverb = []
 useless = []
 unUsedWords = []
 
-scrapping.scrape()
+
 
 for sentence in sentences:
     for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
