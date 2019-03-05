@@ -19,6 +19,7 @@ verb3person = []
 adverb = []
 useless = []
 unUsedWords = []
+adjective = []
 
 
 
@@ -32,6 +33,8 @@ for sentence in sentences:
             propernounS.append(word)
         elif (pos == 'NNPS'):
             propernounP.append(word)
+        elif (pos == 'JJ'):
+            adjective.append(word)
         elif (pos == 'VB' or  pos == 'VBG' or pos == 'VBN'):
             verbs.append(word)
         elif (pos == 'VBD'):
@@ -52,10 +55,9 @@ file = open("testfile.txt","w")
 
 for x in range(1,100):
     if (x % 10 == 0):
-        file.write(",")
         file.write("\n")
     y = random.randint(0,5)
-    if(y -1 == 5):
+    """if(y -1 == 5):
         file.write(numpy.random.choice(nouns) + " ")
         y1 = random.randint(0, 2)
         if (y1 == 1):
@@ -109,4 +111,11 @@ for x in range(1,100):
         file.write(numpy.random.choice(propernounS) + " ")
     elif (y == 5):
         file.write(numpy.random.choice(useless))
-        file.write("\n")
+        file.write("\n")"""
+
+    file.write(numpy.random.choice(propernounS) + " ")
+    file.write(numpy.random.choice(verbs) + " ")
+    file.write(numpy.random.choice(nouns) + " ")
+    file.write(".")
+
+
