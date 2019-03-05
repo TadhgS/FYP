@@ -50,14 +50,14 @@ for sentence in sentences:
 
 file = open("testfile.txt","w")
 
-for x in range(1,50):
-    if (x % 7 == 0):
+for x in range(1,100):
+    if (x % 10 == 0):
         file.write(",")
         file.write("\n")
-    y = random.randint(0,6)
+    y = random.randint(0,5)
     if(y -1 == 5):
         file.write(numpy.random.choice(nouns) + " ")
-        y1 = random.randint(0, 6)
+        y1 = random.randint(0, 2)
         if (y1 == 1):
             file.write(numpy.random.choice(nouns) + " ")
         elif (y1 == 2):
@@ -73,7 +73,7 @@ for x in range(1,50):
         y = random.randint(1,2)
         if (y == 1):
             file.write(numpy.random.choice(verbs) + " ")
-            y2 = random.randint(0, 6)
+            y2 = random.randint(0, 2)
             if (y2 == 1):
                 file.write(numpy.random.choice(nouns) + " ")
             elif (y2 == 2):
@@ -87,7 +87,7 @@ for x in range(1,50):
                 file.write("\n")
         elif (y == 2):
             file.write(numpy.random.choice(verbpast) + " ")
-            y3 = random.randint(0, 6)
+            y3 = random.randint(0, 2)
             if (y3 == 1):
                 file.write(numpy.random.choice(nouns) + " ")
             elif (y3 == 2):

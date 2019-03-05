@@ -4,8 +4,12 @@ import requests
 def scrape():
     i = 1
     file = open("words.txt", "w")
-    while i < 10:
-        url = requests.get("https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=scooby-doo-where-are-you-1969&episode=s01e0"+ str(i))
+    while i <= 17:
+        if i < 10:
+            a = "0" + str(i)
+        else:
+            a = str(i)
+        url = requests.get("https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=scooby-doo-where-are-you-1969&episode=s01e"+ a)
 
         bSoup = BeautifulSoup(url.content, 'html.parser')
 
