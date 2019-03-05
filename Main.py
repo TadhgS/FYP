@@ -1,6 +1,6 @@
 import nltk
 import numpy
-import random
+import nltk.grammar
 import scrapping
 from nltk.parse.generate import generate, demo_grammar
 from nltk import CFG
@@ -23,12 +23,12 @@ useless = []
 unUsedWords = []
 adjective = []
 
-grammar1 = nltk.parse_cfg("""
+grammar1 = nltk.CFG.fromstring("""
   S -> NP VP
   VP -> V NP | V NP PP
   PP -> P NP
   V -> "saw" | "ate" | "walked"
-  NP -> propernounS | propernounP | Det N | Det N PP
+  NP -> "Fred" | "Shaggy" | Det N | Det N PP
   Det -> "a" | "an" | "the" | "my"
   N -> "man" | "dog" | "cat" | "telescope" | "park"
   P -> "in" | "on" | "by" | "with"
@@ -123,16 +123,14 @@ for x in range(1,100):
         file.write(numpy.random.choice(propernounS) + " ")
     elif (y == 5):
         file.write(numpy.random.choice(useless))
-        file.write("\n")'''
+        file.write("\n")
 
     file.write(numpy.random.choice(propernounS) + " ")
     file.write(numpy.random.choice(verbs) + " ")
     file.write(numpy.random.choice(nouns) + "")
     file.write(". ")
-    file.write("\n")
+    file.write("\n")'''
 
-
-grammar = CFG.fromstring(demo_grammar)
-for sentence in generate(grammar1, n=10):
+for sentence in generate(grammar1, n=15):
     file.write(' '.join(sentence))
     file.write("\n")
