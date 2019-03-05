@@ -2,6 +2,8 @@ import nltk
 import numpy
 import random
 import scrapping
+from nltk.parse.generate import generate, demo_grammar
+from nltk import CFG
 
 scrapping.scrape()
 
@@ -21,7 +23,16 @@ useless = []
 unUsedWords = []
 adjective = []
 
-
+grammar1 = nltk.parse_cfg("""
+  S -> NP VP
+  VP -> V NP | V NP PP
+  PP -> P NP
+  V -> "saw" | "ate" | "walked"
+  NP -> propernounS | propernounP | Det N | Det N PP
+  Det -> "a" | "an" | "the" | "my"
+  N -> "man" | "dog" | "cat" | "telescope" | "park"
+  P -> "in" | "on" | "by" | "with"
+  """)
 
 for sentence in sentences:
     for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
@@ -53,11 +64,12 @@ for sentence in sentences:
 
 file = open("testfile.txt","w")
 
+
 for x in range(1,100):
-    if (x % 10 == 0):
+    '''if (x % 10 == 0):
         file.write("\n")
     y = random.randint(0,5)
-    """if(y -1 == 5):
+    if(y -1 == 5):
         file.write(numpy.random.choice(nouns) + " ")
         y1 = random.randint(0, 2)
         if (y1 == 1):
@@ -111,11 +123,16 @@ for x in range(1,100):
         file.write(numpy.random.choice(propernounS) + " ")
     elif (y == 5):
         file.write(numpy.random.choice(useless))
-        file.write("\n")"""
+        file.write("\n")'''
 
     file.write(numpy.random.choice(propernounS) + " ")
     file.write(numpy.random.choice(verbs) + " ")
-    file.write(numpy.random.choice(nouns) + " ")
-    file.write(".")
+    file.write(numpy.random.choice(nouns) + "")
+    file.write(". ")
+    file.write("\n")
 
 
+grammar = CFG.fromstring(demo_grammar)
+for sentence in generate(grammar1, n=10):
+    file.write(' '.join(sentence))
+    file.write("\n")
