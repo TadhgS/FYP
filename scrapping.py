@@ -1,21 +1,16 @@
 from bs4 import BeautifulSoup
 import requests
 
-def scrape():
-    i = 1
+def scrape(iNew):
+    i = iNew
     file = open("words.txt", "w")
-    while i <= 17:
-        if i < 10:
-            a = "0" + str(i)
-        else:
-            a = str(i)
-        url = requests.get("https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=scooby-doo-where-are-you-1969&episode=s01e"+ a)
+    a = "0" + str(i)
+    url = requests.get("https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=scooby-doo-where-are-you-1969&episode=s01e"+ a)
 
-        bSoup = BeautifulSoup(url.content, 'html.parser')
+    bSoup = BeautifulSoup(url.content, 'html.parser')
 
-        text = bSoup.find_all('div', class_='scrolling-script-container')
-        for row in text:
-            h = row.text.strip()
-            file.write(h)
-        file.write("\n")
-        i+=1
+    text = bSoup.find_all('div', class_='scrolling-script-container')
+    for row in text:
+        h = row.text.strip()
+        file.write(h)
+    file.write("\n")
