@@ -27,7 +27,8 @@ cursor = connect.cursor()
 #cursor.execute("""CREATE TABLE monsters (
 #                monster text,
 #                local text,
-#                name text
+#                name text,
+#                clue text
 #                )""")
 #cursor.execute("""CREATE TABLE words(
 #                word text,
@@ -41,4 +42,8 @@ cursor = connect.cursor()
 #cursor.execute("UPDATE words SET freq "+str(x)+" WHERE word = "+word+"")
 #cursor.execute("SELECT * FROM words")
 #print(cursor.fetchall())
+
+
+cursor.execute("SELECT * FROM monsters")
+print(cursor.fetchall())
 connect.commit()

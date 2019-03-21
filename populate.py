@@ -226,3 +226,34 @@ def pop(i):
         i = trueuuW.index(x)
         database.cursor.execute("INSERT INTO words VALUES (?, ?, ?, ?)", (x, 'US', locations[loc], uuWCount[i]))
 
+    database.cursor.execute("INSERT INTO monsters VALUES ('Knight','Castle','Old Man Jenkins','Picture Next to Armour')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Vampire','Castle','Andrew the Tour Guide','Make Up')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Shadow','Castle','Frank the Janitor','Name Badge')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Ghost Pirate','Beach','Bill the Lifeguard','Costume')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Seaweed Monster','Beach','Old Fisherman Joe','Seaweed at house')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Shark','Beach','The Mayor','Shark fins in office')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Cowboy Ghost','Ghost Town','Jerry the Businessman ','Cowboy hat')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Miner Ghost','Ghost Town','Gold Hunter Phil','Dust on shoes')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Headless Horse Man','Ghost Town','Envirnmentalist Paddy','Owns a horse')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Francinstein','Haunted House','Sir Godfree','Green paint on skin')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Zombie','Haunted House','The Waiter','Make Up')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Ghost','Haunted House','Jimmy','Glow in the dark paint on cloths')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Ape Man','Jungle','Explorer Fred','Monkey Costume')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Animal Ghosts','Jungle','Environmentalist Jennie','Scratch Marks')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Pterodactyl','Jungle','Tour Guide Bill','Book on flight')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Clown Ghost','Carnival','Ring Master','Access to Costumes')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Zombie','Carnival','Blind Knife Thrower','Not Really Blind')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Animals','Carnival','Worlds Strongest Man','Scratch marks ')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Ghost Car','Highway','Old Town Mayor','Same Car in Garage')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('White Lady Ghost','Highway','Miss Anderson','White Dress in closet')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Aliens','Highway','Conspiracy Tom','Fake Space ship on campervan')")
+
+    database.cursor.execute("INSERT INTO monsters VALUES ('Mummy','Pyramid','Museum Curator Petterson ','Bandages in House')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Sand Man','Pyramid','Ramesh the Tour Guide','Sand in hair')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Sphynx','Pyramid','Tour Guide Bob','scratch marks')")
