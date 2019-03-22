@@ -225,10 +225,16 @@ def pop(i):
     for x in trueuuW:
         i = trueuuW.index(x)
         database.cursor.execute("INSERT INTO words VALUES (?, ?, ?, ?)", (x, 'US', locations[loc], uuWCount[i]))
+def pop2():
 
-    database.cursor.execute("INSERT INTO monsters VALUES ('Knight','Castle','Old Man Jenkins','Picture Next to Armour')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Vampire','Castle','Andrew the Tour Guide','Make Up')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Shadow','Castle','Frank the Janitor','Name Badge')")
+    knight = "Knight"
+    castle = "Castle"
+    omj = "Old Man Jenkins"
+    clue1 = "Picture next to armour"
+
+    database.cursor.execute("INSERT INTO monsters VALUES (?,?,?,?)",(knight,castle,omj,clue1))
+    '''database.cursor.execute("INSERT INTO monsters VALUES (' Vampire ' , ' Castle ' , ' Andrew the Tour ', ' Guide Make Up ')")
+    database.cursor.execute("INSERT INTO monsters VALUES (' Shadow ' , ' Castle ' , ' Frank the Janitor ' , ' Name Badge ')")
 
     database.cursor.execute("INSERT INTO monsters VALUES ('Ghost Pirate','Beach','Bill the Lifeguard','Costume')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Seaweed Monster','Beach','Old Fisherman Joe','Seaweed at house')")
@@ -256,4 +262,4 @@ def pop(i):
 
     database.cursor.execute("INSERT INTO monsters VALUES ('Mummy','Pyramid','Museum Curator Petterson ','Bandages in House')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Sand Man','Pyramid','Ramesh the Tour Guide','Sand in hair')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Sphynx','Pyramid','Tour Guide Bob','scratch marks')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Sphynx','Pyramid','Tour Guide Bob','scratch marks')")'''''

@@ -6,6 +6,7 @@ import populate
 def scrape():
     i = 1
     file = open("words.txt", "w")
+    populate.pop2()
     while i < 18:
         if(i < 10):
             a = "0" + str(i)

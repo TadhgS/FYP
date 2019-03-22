@@ -43,7 +43,8 @@ cursor = connect.cursor()
 #cursor.execute("SELECT * FROM words")
 #print(cursor.fetchall())
 
-
+#cursor.execute("DELETE FROM monsters")
 cursor.execute("SELECT * FROM monsters")
+
 print(cursor.fetchall())
 connect.commit()
