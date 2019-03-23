@@ -7,16 +7,17 @@ scrapping.scrape()
 useableMonsters = []
 
 def write_Story():
-    cm = 0
+    if(var.get() == "('Castle',)"):
+        useLocal = "Castle"
+    elif(var.get() == "('Beach',)"):
+        useLocal = "Beach"
     print(var.get())
-    print("Scooby and Shaggy where in the " + var.get())
-    useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + var.get() +"'")
+    print("Scooby and Shaggy where in the " + useLocal )
+    useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
     for row in useable:
-        useableMonsters[cm] = row
-        cm+=1
-    x = len(useableMonsters)
-    i = random.randint[1,x]
-    print("There was a" +useableMonsters[i])
+        useableMonsters.append(row)
+    i = random.choice(useableMonsters)
+    print("There was a " + str(i))
 
 master = Tk()
 master.geometry("300x100")
