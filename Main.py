@@ -5,19 +5,42 @@ import random
 
 scrapping.scrape()
 useableMonsters = []
+cluesable = []
 
 def write_Story():
-    if(var.get() == "('Castle',)"):
+    '''if(var.get() == "('Castle',)"):
         useLocal = "Castle"
     elif(var.get() == "('Beach',)"):
         useLocal = "Beach"
-    print(var.get())
+    elif (var.get() == "('Ghost Town',)"):
+        useLocal = "Ghost Town"
+    elif (var.get() == "('Haunted House',)"):
+        useLocal = "Haunted Hause"
+    elif (var.get() == "('Jungle',)"):
+        useLocal = "Jungle"
+    elif (var.get() == "('Carnival',)"):
+        useLocal = "Carnival"
+    elif (var.get() == "('Highway',)"):
+        useLocal = "Highway"
+    else:
+        useLocal = " "'''''
+    useLocal = (var.get()).strip("'(),'")
+    #print(var.get())
     print("Scooby and Shaggy where in the " + useLocal )
     useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
     for row in useable:
         useableMonsters.append(row)
     i = random.choice(useableMonsters)
-    print("There was a " + str(i))
+    i = str(i)
+    i = i.strip("'(),'")
+    print("There was a " + i)
+    theClue = database.cursor.execute("SELECT clue FROM monsters WHERE monster ='" + i + "'")
+    for row in theClue:
+        cluesable.append(row)
+    clue = random.choice(cluesable)
+    clue = str(clue)
+    clue = clue.strip("'(),'")
+    print("They found a " + clue + " on the table.")
 
 master = Tk()
 master.geometry("300x100")
@@ -40,4 +63,3 @@ ok.grid(row=1,column=1)
 
 master.mainloop()
 
-#"Castle","Beach","Ghost Town","Haunted House","Jungle","Carnival","Highway","Pyramids","Random"

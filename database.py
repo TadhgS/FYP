@@ -44,7 +44,7 @@ cursor = connect.cursor()
 #print(cursor.fetchall())
 
 #cursor.execute("DELETE FROM monsters")
-cursor.execute("SELECT * FROM monsters")
+#cursor.execute("SELECT * FROM monsters")
 
-print(cursor.fetchall())
+#print(cursor.fetchall())
 connect.commit()
