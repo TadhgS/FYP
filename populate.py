@@ -1,6 +1,6 @@
 import database
 import nltk
-def pop(i):
+def pop(i): # pupulate the words table
     loc = i
     sentencesTrial = []
     File = open('words.txt')
@@ -225,12 +225,11 @@ def pop(i):
     for x in trueuuW:
         i = trueuuW.index(x)
         database.cursor.execute("INSERT INTO words VALUES (?, ?, ?, ?)", (x, 'US', locations[loc], uuWCount[i]))
-def pop2():
 
-    knight = "Knight"
-    castle = "Castle"
-    omj = "Old Man Jenkins"
-    clue1 = "Picture next to armour"
+
+def pop2(): #populate the monster and characters table
+
+####populating the monsters
 
     database.cursor.execute("INSERT INTO monsters VALUES ('Knight','Castle','Old Man Jenkins','Picture')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Vampire' , 'Castle' , 'Andrew the Tour', 'Guide Make Up')")
@@ -263,3 +262,12 @@ def pop2():
     database.cursor.execute("INSERT INTO monsters VALUES ('Mummy','Pyramid','Museum Curator Petterson ','Bandages in House')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Sand Man','Pyramid','Ramesh the Tour Guide','Sand in hair')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Sphynx','Pyramid','Tour Guide Bob','scratch marks')")
+
+####populating the characters
+
+
+    database.cursor.execute("INSERT INTO characters VALUES ('Scooby Doo','Scooby Dooby Doo')")
+    database.cursor.execute("INSERT INTO characters VALUES ('Shaggy','Zoinks!')")
+    database.cursor.execute("INSERT INTO characters VALUES ('Fred','Lets Split up and look for clues')")
+    database.cursor.execute("INSERT INTO characters VALUES ('Velma','My glasses. I cant find my glasses')")
+    database.cursor.execute("INSERT INTO characters VALUES ('Daphne','Do you want a Scooby Snack')")

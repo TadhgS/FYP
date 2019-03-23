@@ -6,34 +6,55 @@ import random
 scrapping.scrape()
 useableMonsters = []
 cluesable = []
+characters = []
+c1= ""
+c2= ""
+c3= ""
+c4= ""
+c5= ""
 
 def write_Story():
-    '''if(var.get() == "('Castle',)"):
-        useLocal = "Castle"
-    elif(var.get() == "('Beach',)"):
-        useLocal = "Beach"
-    elif (var.get() == "('Ghost Town',)"):
-        useLocal = "Ghost Town"
-    elif (var.get() == "('Haunted House',)"):
-        useLocal = "Haunted Hause"
-    elif (var.get() == "('Jungle',)"):
-        useLocal = "Jungle"
-    elif (var.get() == "('Carnival',)"):
-        useLocal = "Carnival"
-    elif (var.get() == "('Highway',)"):
-        useLocal = "Highway"
-    else:
-        useLocal = " "'''''
+    char = database.cursor.execute("SELECT name FROM characters")
+    for row in char:
+        characters.append(row)
+#Done so that all characters will be with characters they are already written with
+    c1 = random.choice(characters)
+    characters.remove(c1)
+    c1 = str(c1)
+    c1 = c1.strip("'(),'")
+
+    c2 = random.choice(characters)
+    characters.remove(c2)
+    c2 = str(c2)
+    c2 = c2.strip("'(),'")
+
+    c3 = random.choice(characters)
+    characters.remove(c3)
+    c3 = str(c3)
+    c3 = c3.strip("'(),'")
+
+    c4 = random.choice(characters)
+    characters.remove(c4)
+    c4 = str(c4)
+    c4 = c4.strip("'(),'")
+
+    c5 = random.choice(characters)
+    c5 = str(c5)
+    c5 = c5.strip("'(),'")
+
     useLocal = (var.get()).strip("'(),'")
     #print(var.get())
-    print("Scooby and Shaggy where in the " + useLocal )
+    print(c1 + " and " + c2 + " where in the " + useLocal )
+
     useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
+
     for row in useable:
         useableMonsters.append(row)
     i = random.choice(useableMonsters)
     i = str(i)
     i = i.strip("'(),'")
     print("There was a " + i)
+
     theClue = database.cursor.execute("SELECT clue FROM monsters WHERE monster ='" + i + "'")
     for row in theClue:
         cluesable.append(row)
@@ -41,6 +62,8 @@ def write_Story():
     clue = str(clue)
     clue = clue.strip("'(),'")
     print("They found a " + clue + " on the table.")
+
+
 
 master = Tk()
 master.geometry("300x100")

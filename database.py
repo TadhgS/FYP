@@ -37,6 +37,12 @@ cursor = connect.cursor()
 #                freq integer
 #                )""")
 
+#cursor.execute("""CREATE TABLE characters (
+#                name text,
+#                catchphrase text
+#                )""")
+
+
 #cursor.execute("INSERT INTO words VALUES ('Hello','NN','Castle','6')")
 
 #cursor.execute("UPDATE words SET freq "+str(x)+" WHERE word = "+word+"")
