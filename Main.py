@@ -52,7 +52,17 @@ def write_Story():
     adjectiveToUse = str(adjectiveToUse)
     adjectiveToUse = adjectiveToUse.strip("'(),'")
 
-    print(c1 + " and " + c2 + " where in the " + adjectiveToUse + " " + useLocal )
+    print(c1 + " and " + c2 + " where at the " + adjectiveToUse + " " + useLocal )
+
+    verbPull = []
+    verb1pull = database.cursor.execute("SELECT word FROM words WHERE type ='VBD'")
+    for x in verb1pull:
+        verbPull.append(x)
+    verb1 = random.choice(verbPull)
+    verb1 = str(verb1)
+    verb1 = verb1.strip("'(),'")
+
+    print(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " to the " + useLocal)
 
     useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
 
@@ -61,7 +71,15 @@ def write_Story():
     i = random.choice(useableMonsters)
     i = str(i)
     i = i.strip("'(),'")
-    print("There was a " + i)
+    useAd = []
+    adjective = database.cursor.execute("SELECT word FROM words WHERE type ='JJ' AND local ='" + useLocal + "'")
+    for ad in adjective:
+        useAd.append(ad)
+    adjectiveToUse = random.choice(useAd)
+    adjectiveToUse = str(adjectiveToUse)
+    adjectiveToUse = adjectiveToUse.strip("'(),'")
+
+    print("There was a " + adjectiveToUse + " " + i)
 
     theClue = database.cursor.execute("SELECT clue FROM monsters WHERE monster ='" + i + "'")
     for row in theClue:
@@ -69,6 +87,7 @@ def write_Story():
     clue = random.choice(cluesable)
     clue = str(clue)
     clue = clue.strip("'(),'")
+
     print("They found a " + clue + " on the table.")
 
 
