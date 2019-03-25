@@ -43,8 +43,16 @@ def write_Story():
     c5 = c5.strip("'(),'")
 
     useLocal = (var.get()).strip("'(),'")
-    #print(var.get())
-    print(c1 + " and " + c2 + " where in the " + useLocal )
+
+    useAd = []
+    adjective = database.cursor.execute("SELECT word FROM words WHERE type ='JJ'")
+    for ad in adjective:
+        useAd.append(ad)
+    adjectiveToUse = random.choice(useAd)
+    adjectiveToUse = str(adjectiveToUse)
+    adjectiveToUse = adjectiveToUse.strip("'(),'")
+
+    print(c1 + " and " + c2 + " where in the " + adjectiveToUse + " " + useLocal )
 
     useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
 
