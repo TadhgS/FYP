@@ -43,7 +43,6 @@ def write_Story():
     c5 = c5.strip("'(),'")
 
     useLocal = (var.get()).strip("'(),'")
-
     useAd = []
     adjective = database.cursor.execute("SELECT word FROM words WHERE type ='JJ'")
     for ad in adjective:
@@ -51,8 +50,6 @@ def write_Story():
     adjectiveToUse = random.choice(useAd)
     adjectiveToUse = str(adjectiveToUse)
     adjectiveToUse = adjectiveToUse.strip("'(),'")
-
-    print(c1 + " and " + c2 + " where at the " + adjectiveToUse + " " + useLocal )
 
     verbPull = []
     verb1pull = database.cursor.execute("SELECT word FROM words WHERE type ='VBD'")
@@ -62,24 +59,36 @@ def write_Story():
     verb1 = str(verb1)
     verb1 = verb1.strip("'(),'")
 
-    print(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " to the " + useLocal)
-
     useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
-
     for row in useable:
         useableMonsters.append(row)
     i = random.choice(useableMonsters)
     i = str(i)
     i = i.strip("'(),'")
-    useAd = []
-    adjective = database.cursor.execute("SELECT word FROM words WHERE type ='JJ' AND local ='" + useLocal + "'")
-    for ad in adjective:
-        useAd.append(ad)
-    adjectiveToUse = random.choice(useAd)
-    adjectiveToUse = str(adjectiveToUse)
-    adjectiveToUse = adjectiveToUse.strip("'(),'")
 
-    print("There was a " + adjectiveToUse + " " + i)
+    useAd1 = []
+    adjective1 = database.cursor.execute("SELECT word FROM words WHERE type ='JJ' AND local ='" + useLocal + "'")
+    for ad in adjective1:
+        useAd1.append(ad)
+    adjectiveToUse1 = random.choice(useAd1)
+    adjectiveToUse1 = str(adjectiveToUse1)
+    adjectiveToUse1 = adjectiveToUse1.strip("'(),'")
+
+    adjectiveToUse2 = random.choice(useAd)
+    adjectiveToUse2 = str(adjectiveToUse2)
+    adjectiveToUse2 = adjectiveToUse2.strip("'(),'")
+
+    action = random.choice(useAd)
+    action = str(action)
+    action = action.strip("'(),'")
+
+    monst = []
+    monstPull = database.cursor.execute("SELECT name FROM monsters WHERE monster ='" + i +"'")
+    for x in monstPull:
+        monst.append(x)
+    monsterName = random.choice(monst)
+    monsterName = str(monsterName)
+    monsterName = monsterName.strip("'(),'")
 
     theClue = database.cursor.execute("SELECT clue FROM monsters WHERE monster ='" + i + "'")
     for row in theClue:
@@ -88,7 +97,72 @@ def write_Story():
     clue = str(clue)
     clue = clue.strip("'(),'")
 
-    print("They found a " + clue + " on the table.")
+    catchphraseGroup = []
+    catchphrasePull = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = '" + c1 + "'")
+    for x in catchphrasePull:
+        catchphraseGroup.append(x)
+    catchphrase = random.choice(catchphraseGroup)
+    catchphrase = str(catchphrase)
+    catchphrase = catchphrase.strip("'(),'")
+
+    verbPull1 = []
+    verb1pull1 = database.cursor.execute("SELECT word FROM words WHERE type ='VBD'")
+    for x in verb1pull1:
+        verbPull1.append(x)
+    verb11 = random.choice(verbPull1)
+    verb11 = str(verb11)
+    verb11 = verb11.strip("'(),'")
+
+    verb2 = random.choice(verbPull)
+    verb2 = str(verb2)
+    verb2 = verb2.strip("'(),'")
+
+    fredClue = []
+    fredPhrase = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = 'Fred'")
+    for x in fredPhrase:
+        fredClue.append(x)
+    fredCatchPhrase = random.choice(fredClue)
+    fredCatchPhrase = str(fredCatchPhrase)
+    fredCatchPhrase = fredCatchPhrase.strip("'(),'")
+
+    nounsGroup = []
+    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NN'")
+    for n in nounsGroupBase:
+        nounsGroup.append(n)
+    nouns = random.choice(nounsGroup)
+    nouns = str(nouns)
+    nouns = nouns.strip("'(),'")
+
+    shaggyClue = []
+    shaggyPhrase = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = 'Shaggy'")
+    for x in shaggyPhrase:
+        shaggyClue.append(x)
+    shaggyCatchPhrase = random.choice(shaggyClue)
+    shaggyCatchPhrase = str(shaggyCatchPhrase)
+    shaggyCatchPhrase = shaggyCatchPhrase.strip("'(),'")
+
+    velmaClue = []
+    velmaPhrase = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = 'Velma'")
+    for x in velmaPhrase:
+        velmaClue.append(x)
+    velmaCatchPhrase = random.choice(velmaClue)
+    velmaCatchPhrase = str(velmaCatchPhrase)
+    velmaCatchPhrase = velmaCatchPhrase.strip("'(),'")
+
+    print(c1 + " and " + c2 + " where at the " + adjectiveToUse + " " + useLocal)
+    print(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " to a " + useLocal)
+    print(c1 + " and " + c2 + " met up with " + c3 + ", " + c4 + " and " + c5)
+    print("The gang met " + monsterName)
+    print(monsterName + " told stories of a " + adjectiveToUse + " " + i)
+    print(shaggyCatchPhrase + " " + adjectiveToUse2 + " Shaggy")
+    if(c1 != 'Shaggy'):
+        print(catchphrase + " " + verb11 + " " + c1)
+    if(c1 != 'Fred'):
+        print(fredCatchPhrase + " said Fred")
+    print(c1 + " and " + c2 + " went to " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + " house")
+    print(c4 + " and " + c5 + " found a " + clue + " on the table in " + monsterName + " house.")
+    print("The " + i + " " + action + "ed " + c1 + ", " + c2 + " and " + c3)
+    print(velmaCatchPhrase + " said Velma")
 
 
 
