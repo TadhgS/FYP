@@ -59,6 +59,30 @@ def write_Story():
     verb1 = str(verb1)
     verb1 = verb1.strip("'(),'")
 
+    action = random.choice(verbPull)
+    action = str(action)
+    action = action.strip("'(),'")
+
+    verb11 = random.choice(verbPull)
+    verb11 = str(verb11)
+    verb11 = verb11.strip("'(),'")
+
+    verb2 = random.choice(verbPull)
+    verb2 = str(verb2)
+    verb2 = verb2.strip("'(),'")
+
+    verb3 = random.choice(verbPull)
+    verb3 = str(verb3)
+    verb3 = verb3.strip("'(),'")
+
+    verb4 = random.choice(verbPull)
+    verb4 = str(verb4)
+    verb4 = verb4.strip("'(),'")
+
+    verb5 = random.choice(verbPull)
+    verb5 = str(verb5)
+    verb5 = verb5.strip("'(),'")
+
     useable = database.cursor.execute("SELECT monster FROM monsters WHERE local ='" + useLocal +"'")
     for row in useable:
         useableMonsters.append(row)
@@ -74,13 +98,9 @@ def write_Story():
     adjectiveToUse1 = str(adjectiveToUse1)
     adjectiveToUse1 = adjectiveToUse1.strip("'(),'")
 
-    adjectiveToUse2 = random.choice(useAd)
+    adjectiveToUse2 = random.choice(useAd1)
     adjectiveToUse2 = str(adjectiveToUse2)
     adjectiveToUse2 = adjectiveToUse2.strip("'(),'")
-
-    action = random.choice(useAd)
-    action = str(action)
-    action = action.strip("'(),'")
 
     monst = []
     monstPull = database.cursor.execute("SELECT name FROM monsters WHERE monster ='" + i +"'")
@@ -105,18 +125,6 @@ def write_Story():
     catchphrase = str(catchphrase)
     catchphrase = catchphrase.strip("'(),'")
 
-    verbPull1 = []
-    verb1pull1 = database.cursor.execute("SELECT word FROM words WHERE type ='VBD'")
-    for x in verb1pull1:
-        verbPull1.append(x)
-    verb11 = random.choice(verbPull1)
-    verb11 = str(verb11)
-    verb11 = verb11.strip("'(),'")
-
-    verb2 = random.choice(verbPull)
-    verb2 = str(verb2)
-    verb2 = verb2.strip("'(),'")
-
     fredClue = []
     fredPhrase = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = 'Fred'")
     for x in fredPhrase:
@@ -126,7 +134,7 @@ def write_Story():
     fredCatchPhrase = fredCatchPhrase.strip("'(),'")
 
     nounsGroup = []
-    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NN'")
+    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NN' AND freq >= '5'")
     for n in nounsGroupBase:
         nounsGroup.append(n)
     nouns = random.choice(nounsGroup)
@@ -149,20 +157,42 @@ def write_Story():
     velmaCatchPhrase = str(velmaCatchPhrase)
     velmaCatchPhrase = velmaCatchPhrase.strip("'(),'")
 
+    wetherUse = []
+    wetherChoice = database.cursor.execute("SELECT wether FROM location WHERE local = '"+ useLocal+"'")
+    for w in wetherChoice:
+        wetherUse.append(w)
+    wether = random.choice(wetherUse)
+    wether = str(wether)
+    wether = wether.strip("'(),'")
+
+    #fileName = useLocal+i+c1
+    #file = open(fileName + ".txt","w")
+
     print(c1 + " and " + c2 + " where at the " + adjectiveToUse + " " + useLocal)
-    print(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " to a " + useLocal)
+    print(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " a " + useLocal)
+    print("It was " + wether)
     print(c1 + " and " + c2 + " met up with " + c3 + ", " + c4 + " and " + c5)
     print("The gang met " + monsterName)
-    print(monsterName + " told stories of a " + adjectiveToUse + " " + i)
-    print(shaggyCatchPhrase + " " + adjectiveToUse2 + " Shaggy")
+    print(monsterName + " told stories of a " + adjectiveToUse1 + " " + i)
+    print(shaggyCatchPhrase + " " + verb3 + " Shaggy")
     if(c1 != 'Shaggy'):
         print(catchphrase + " " + verb11 + " " + c1)
     if(c1 != 'Fred'):
         print(fredCatchPhrase + " said Fred")
-    print(c1 + " and " + c2 + " went to " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + " house")
-    print(c4 + " and " + c5 + " found a " + clue + " on the table in " + monsterName + " house.")
+    print(c1 + " and " + c2 + " went to " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house")
+    print(c4 + " and " + c5 + " found a " + clue + " on the table in " + monsterName + "s house.")
     print("The " + i + " " + action + "ed " + c1 + ", " + c2 + " and " + c3)
+    print("Velma " + verb4)
     print(velmaCatchPhrase + " said Velma")
+    print(monsterName + " handed Velma her " + adjectiveToUse2 + " glasses")
+    print("Stop Them! " + verb5 + " "+ c3)
+    print(monsterName + " ran away")
+    print("The " + i + " appeared")
+    print(c1 + " " + c5 + " ran into the " + i)
+    print(c3 + " unmasked the " + i)
+    print(monsterName +" gasped the gang")
+    print("And I would have got away with it to! If it weren't for you meddling kids! said "+ monsterName)
+    print("THE END")
 
 
 

@@ -6,7 +6,7 @@ def pop(i): # pupulate the words table
     File = open('words.txt')
     lines = File.read()
     sentences = nltk.sent_tokenize(lines)
-    locations = ["Castle","Beach","Beach","Ghost Town","Ghost Town","Haunted House","Jungle","Carnival", "Ghost Town", "Highway", "Castle", "Pyrimades","Beach","Beach","Carnival", "Highway", "Castle" ,"Jungle" ]
+    locations = ["Castle","Beach","Beach","Ghost Town","Ghost Town","Haunted House","Jungle","Carnival", "Ghost Town", "Highway", "Castle", "Pyramid","Beach","Beach","Carnival", "Highway", "Castle" ,"Jungle" ]
 
     for sentence in sentences:
         for word, pos in nltk.pos_tag(nltk.word_tokenize(str(sentence))):
@@ -271,3 +271,24 @@ def pop2(): #populate the monster and characters table
     database.cursor.execute("INSERT INTO characters VALUES ('Fred','Lets Split up and look for clues')")
     database.cursor.execute("INSERT INTO characters VALUES ('Velma','My glasses. I cant find my glasses')")
     database.cursor.execute("INSERT INTO characters VALUES ('Daphne','Do you want a Scooby Snack')")
+
+    database.cursor.execute("INSERT INTO location VALUES ('Castle','Stormy')")
+    database.cursor.execute("INSERT INTO location VALUES ('Castle','Raining')")
+    database.cursor.execute("INSERT INTO location VALUES ('Castle','Misty')")
+    database.cursor.execute("INSERT INTO location VALUES ('Castle','Dark')")
+    database.cursor.execute("INSERT INTO location VALUES ('Beach','Sunny')")
+    database.cursor.execute("INSERT INTO location VALUES ('Beach','Misty')")
+    database.cursor.execute("INSERT INTO location VALUES ('Ghost Town','Cloudy')")
+    database.cursor.execute("INSERT INTO location VALUES ('Ghost TOwn','Foggy')")
+    database.cursor.execute("INSERT INTO location VALUES ('Haunted House','Stormy')")
+    database.cursor.execute("INSERT INTO location VALUES ('Haunted House','Misty')")
+    database.cursor.execute("INSERT INTO location VALUES ('Jungle','Sunny')")
+    database.cursor.execute("INSERT INTO location VALUES ('Jungle','Raining')")
+    database.cursor.execute("INSERT INTO location VALUES ('Carnival','Dark')")
+    database.cursor.execute("INSERT INTO location VALUES ('Carnival','Cloudy')")
+    database.cursor.execute("INSERT INTO location VALUES ('Carnival','Overcast')")
+    database.cursor.execute("INSERT INTO location VALUES ('Highway','Overcast')")
+    database.cursor.execute("INSERT INTO location VALUES ('Highway','Sunny')")
+    database.cursor.execute("INSERT INTO location VALUES ('Pyramid','Overcast')")
+    database.cursor.execute("INSERT INTO location VALUES ('Pyramid','Sunny')")
+    database.cursor.execute("INSERT INTO location VALUES ('Pyramid','Raining')")
