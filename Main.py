@@ -125,6 +125,14 @@ def write_Story():
     catchphrase = str(catchphrase)
     catchphrase = catchphrase.strip("'(),'")
 
+    scoobyphraseGroup = []
+    scoobyphrasePull = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = 'Scooby Doo'")
+    for x in scoobyphrasePull:
+        scoobyphraseGroup.append(x)
+    scoobyphrase = random.choice(scoobyphraseGroup)
+    scoobyphrase = str(scoobyphrase)
+    scoobyphrase = scoobyphrase.strip("'(),'")
+
     fredClue = []
     fredPhrase = database.cursor.execute("SELECT catchphrase FROM characters WHERE name = 'Fred'")
     for x in fredPhrase:
@@ -134,7 +142,7 @@ def write_Story():
     fredCatchPhrase = fredCatchPhrase.strip("'(),'")
 
     nounsGroup = []
-    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NN' AND freq >= '5'")
+    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NNP' AND freq >= '5'")
     for n in nounsGroupBase:
         nounsGroup.append(n)
     nouns = random.choice(nounsGroup)
@@ -165,35 +173,340 @@ def write_Story():
     wether = str(wether)
     wether = wether.strip("'(),'")
 
-    #fileName = useLocal+i+c1
-    #file = open(fileName + ".txt","w")
+    file = open("textfile.txt","w")
 
-    print(c1 + " and " + c2 + " where at the " + adjectiveToUse + " " + useLocal)
-    print(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " a " + useLocal)
-    print("It was " + wether)
-    print(c1 + " and " + c2 + " met up with " + c3 + ", " + c4 + " and " + c5)
-    print("The gang met " + monsterName)
-    print(monsterName + " told stories of a " + adjectiveToUse1 + " " + i)
-    print(shaggyCatchPhrase + " " + verb3 + " Shaggy")
+    #Randomise sentences ?
+
+    file.write("Scooby Doo and the " + adjectiveToUse1 + " " + i + "\n")
+    file.write("\n")
+    file.write(c1 + " and " + c2 + " where at the " + adjectiveToUse + " " + useLocal + "\n")
+    file.write(c3 + ", " + c4 + " and " + c5 + " " + verb1 + " to the " + useLocal+ "\n")
+    file.write("It was " + wether+ "\n")
+    file.write(c1 + " and " + c2 + " met up with " + c3 + ", " + c4 + " and " + c5+ "\n")
+    file.write("The gang met " + monsterName+ "\n")
+    file.write(monsterName + " told stories of a " + adjectiveToUse1 + " " + i+ "\n")
     if(c1 != 'Shaggy'):
-        print(catchphrase + " " + verb11 + " " + c1)
+        file.write(catchphrase + " " + verb11 + " " + c1+ "\n")
+    if(c1 == 'Velma'):
+        file.write("Jinkies " + verb11 + " " + c1 + "\n")
+    if(c1 == 'Scooby Doo'):
+        file.write("Rut Ro wimpered " + c1)
     if(c1 != 'Fred'):
-        print(fredCatchPhrase + " said Fred")
-    print(c1 + " and " + c2 + " went to " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house")
-    print(c4 + " and " + c5 + " found a " + clue + " on the table in " + monsterName + "s house.")
-    print("The " + i + " " + action + "ed " + c1 + ", " + c2 + " and " + c3)
-    print("Velma " + verb4)
-    print(velmaCatchPhrase + " said Velma")
-    print(monsterName + " handed Velma her " + adjectiveToUse2 + " glasses")
-    print("Stop Them! " + verb5 + " "+ c3)
-    print(monsterName + " ran away")
-    print("The " + i + " appeared")
-    print(c1 + " " + c5 + " ran into the " + i)
-    print(c3 + " unmasked the " + i)
-    print(monsterName +" gasped the gang")
-    print("And I would have got away with it to! If it weren't for you meddling kids! said "+ monsterName)
-    print("THE END")
+        file.write(fredCatchPhrase + " said Fred"+ "\n")
+    if(c1 == 'Shaggy'):
+        if(c2 == 'Scooby Doo'):
+            file.write(c1 + " and " + c2 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "se  house"+ "\n")
+        elif(c3 == 'Scooby Doo'):
+            file.write(c1 + " and " + c3 + " went to the " + nouns + " " + c2 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "se  house"+ "\n")
+        elif (c4 == 'Scooby Doo'):
+            file.write(c1 + " and " + c4 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c2 + " and " + c5 + " went to " + monsterName + "se  house" + "\n")
+        elif (c5 == 'Scooby Doo'):
+            file.write(c1 + " and " + c5 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c2 + " went to " + monsterName + "se  house" + "\n")
+    elif (c2 == 'Shaggy'):
+        if (c1 == 'Scooby Doo'):
+            file.write(c1 + " and " + c2 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "se  house" + "\n")
+        elif (c3 == 'Scooby Doo'):
+            file.write(c2 + " and " + c3 + " went to the " + nouns + " " + c1 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "se  house" + "\n")
+        elif (c4 == 'Scooby Doo'):
+            file.write(c2 + " and " + c4 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c1 + " and " + c5 + " went to " + monsterName + "se  house" + "\n")
+        elif (c5 == 'Scooby Doo'):
+            file.write(c2 + " and " + c5 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c1 + " went to " + monsterName + "se  house" + "\n")
+    else:
+        file.write(c1 + " and " + c2 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "se  house" + "\n")
+    file.write(c4 + " and " + c5 + " found a " + clue + " on the table in " + monsterName + "s house."+ "\n")
+    file.write("The " + i + " " + action + "ed " + c1 + ", " + c2 + " and " + c3+ "\n")
+    file.write("Velma " + verb4+ "\n")
+    file.write(velmaCatchPhrase + " said Velma"+ "\n")
+    file.write(monsterName + " handed Velma her " + adjectiveToUse2 + " glasses"+ "\n")
+    file.write("Stop! " + verb5 + " "+ c3+ "\n")
 
+    #60 get aways .....
+    if(i == 'Knight'):
+        if(wether == 'Stormy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif(wether == 'Raining'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif(wether == 'Misty'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Dark
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif(i == 'Vampire'):
+        if (wether == 'Stormy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Raining'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Misty'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Dark
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Shadow'):
+        if (wether == 'Stormy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Raining'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Misty'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Dark
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Ghost Pirate'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Misty
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Seaweed Monster'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Misty
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Shark'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Misty
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Cowboy Ghost'):
+        if (wether == 'Cloudy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Foggy
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Miner Ghost'):
+        if (wether == 'Cloudy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Foggy
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Headless Horse Man'):
+        if (wether == 'Cloudy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Foggy
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Francinstein'):
+        if (wether == 'Stormy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Misty
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Zombie'):
+        if(useLocal == 'Haunted House'):
+            if (wether == 'Stormy'):
+                file.write(monsterName + " \n")
+                file.write("The " + i + " appeared" + "\n")
+                file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+            else:#Misty
+                file.write(monsterName + " \n")
+                file.write("The " + i + " appeared" + "\n")
+                file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Carnival
+            if (wether == 'Dark'):
+                file.write(monsterName + " \n")
+                file.write("The " + i + " appeared" + "\n")
+                file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+            elif (wether == 'Cloudy'):
+                file.write(monsterName + " \n")
+                file.write("The " + i + " appeared" + "\n")
+                file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+            else:  # Overcast
+                file.write(monsterName + " \n")
+                file.write("The " + i + " appeared" + "\n")
+                file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Ghost'):
+        if (wether == 'Stormy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Misty
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Ape Man'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Aminal Ghosts'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Pterodactyl'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Clown Ghost'):
+        if (wether == 'Dark'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Cloudy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Overcast
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Aminals'):
+        if (wether == 'Dark'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Cloudy'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Overcast
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Ghost Car'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'White Lady Ghost'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif (i == 'Aliens'):
+        if (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    elif (i == 'Mummy'):
+        if (wether == 'Overcast'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    elif(i == 'Sand Man'):
+        if (wether == 'Overcast'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+    else:
+        if (wether == 'Overcast'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        elif (wether == 'Sunny'):
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+        else:#Raining
+            file.write(monsterName + " \n")
+            file.write("The " + i + " appeared" + "\n")
+            file.write(c1 + " and " + c5 + " ran into the " + i + "\n")
+
+
+    file.write(c3 + " unmasked the " + i+ "\n")
+    file.write("'" + monsterName + "'" +" gasped the gang"+ "\n")
+    file.write("And I would have got away with it to! If it weren't for you meddling kids! and your dumb Dog! said "+ monsterName+ "\n")
+    file.write(scoobyphrase + " laughed Scooby \n")
+    file.write("THE END"+ "\n")
 
 
 master = Tk()
@@ -216,4 +529,3 @@ ok = Button(master, text = "OK", command=write_Story )
 ok.grid(row=1,column=1)
 
 master.mainloop()
-

@@ -47,10 +47,10 @@ cursor = connect.cursor()
 
 #cursor.execute("UPDATE words SET freq "+str(x)+" WHERE word = "+word+"")
 #cursor.execute("SELECT * FROM words")
-#print(cursor.fetchall())
+#file.write(cursor.fetchall())
 
 #cursor.execute("DELETE FROM monsters")
 #cursor.execute("SELECT * FROM monsters")
 
-#print(cursor.fetchall())
+#file.write(cursor.fetchall())
 connect.commit()

@@ -236,8 +236,8 @@ def pop2(): #populate the monster and characters table
     database.cursor.execute("INSERT INTO monsters VALUES ('Shadow' , 'Castle' , 'Frank the Janitor' , 'Name Badge')")
 
     database.cursor.execute("INSERT INTO monsters VALUES ('Ghost Pirate','Beach','Bill the Lifeguard','Costume')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Seaweed Monster','Beach','Old Fisherman Joe','Seaweed at house')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Shark','Beach','The Mayor','Shark fins in office')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Seaweed Monster','Beach','Old Fisherman Joe','Seaweed')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Shark','Beach','The Mayor','Shark fins')")
 
     database.cursor.execute("INSERT INTO monsters VALUES ('Cowboy Ghost','Ghost Town','Jerry the Businessman ','Cowboy hat')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Miner Ghost','Ghost Town','Gold Hunter Phil','Dust on shoes')")
@@ -253,13 +253,13 @@ def pop2(): #populate the monster and characters table
 
     database.cursor.execute("INSERT INTO monsters VALUES ('Clown Ghost','Carnival','Ring Master','Access to Costumes')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Zombie','Carnival','Blind Knife Thrower','Not Really Blind')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Animals','Carnival','Worlds Strongest Man','Scratch marks ')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Animals','Carnival','Worlds Strongest Man','Scratch marks')")
 
-    database.cursor.execute("INSERT INTO monsters VALUES ('Ghost Car','Highway','Old Town Mayor','Same Car in Garage')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Ghost Car','Highway','Old Town Mayor','Car ownership documents')")
     database.cursor.execute("INSERT INTO monsters VALUES ('White Lady Ghost','Highway','Miss Anderson','White Dress in closet')")
-    database.cursor.execute("INSERT INTO monsters VALUES ('Aliens','Highway','Conspiracy Tom','Fake Space ship on campervan')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Aliens','Highway','Conspiracy Tom','Fake Space ship')")
 
-    database.cursor.execute("INSERT INTO monsters VALUES ('Mummy','Pyramid','Museum Curator Petterson ','Bandages in House')")
+    database.cursor.execute("INSERT INTO monsters VALUES ('Mummy','Pyramid','Museum Curator Petterson ','Bandages')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Sand Man','Pyramid','Ramesh the Tour Guide','Sand in hair')")
     database.cursor.execute("INSERT INTO monsters VALUES ('Sphynx','Pyramid','Tour Guide Bob','scratch marks')")
 
