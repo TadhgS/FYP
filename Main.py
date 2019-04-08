@@ -1,7 +1,7 @@
-import scrapping
 from tkinter import *
 import database
 import random
+import scrapping
 
 scrapping.scrape()
 useableMonsters = []
@@ -19,7 +19,7 @@ def write_Story():
     char = database.cursor.execute("SELECT name FROM characters")
     for row in char:
         characters.append(row)
-#Done so that all characters will be with characters they are already written with
+
     c1 = random.choice(characters)
     characters.remove(c1)
     c1 = str(c1)
@@ -97,7 +97,8 @@ def write_Story():
     i = i.strip("'(),'")
 
     useAd1 = []
-    adjective1 = database.cursor.execute("SELECT word FROM words WHERE type ='JJ' AND local ='" + useLocal + "'")
+    adjective1 = database.cursor.execute(
+        "SELECT word FROM words WHERE type ='JJ' AND local ='" + useLocal + "'")
     for ad in adjective1:
         useAd1.append(ad)
     adjectiveToUse1 = random.choice(useAd1)
@@ -148,7 +149,7 @@ def write_Story():
     fredCatchPhrase = fredCatchPhrase.strip("'(),'")
 
     nounsGroup = []
-    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NNP' AND freq >= '5'")
+    nounsGroupBase = database.cursor.execute("SELECT word FROM words WHERE type = 'NNP' AND freq >= '10'")
     for n in nounsGroupBase:
         nounsGroup.append(n)
     nouns = random.choice(nounsGroup)
@@ -181,7 +182,6 @@ def write_Story():
 
     file = open("textfile.txt","w")
 
-    #Randomise sentences ?
 
     file.write("Scooby Doo and the " + adjectiveToUse1 + " " + i + "\n")
     file.write("\n")
@@ -191,37 +191,45 @@ def write_Story():
     file.write(c1 + " and " + c2 + " met up with " + c3 + ", " + c4 + " and " + c5+ "\n")
     file.write("The gang met " + monsterName+ "\n")
     file.write(monsterName + " told stories of a " + adjectiveToUse1 + " " + i+ "\n")
-    if(c1 != 'Shaggy'):
-        file.write(catchphrase + " " + verb11 + " " + c1+ "\n")
-    if(c1 == 'Velma'):
+    if (c1 == 'Velma'):
         file.write("Jinkies " + verb11 + " " + c1 + "\n")
-    if(c1 == 'Scooby Doo'):
-        file.write("Rut Ro wimpered " + c1)
+    elif(c1 == 'Scooby Doo'):
+        file.write("Rut Ro wimpered " + c1 + "\n")
+    else:
+        file.write(catchphrase + " " + verb11 + " " + c1 + "\n")
     if(c1 != 'Fred'):
         file.write(fredCatchPhrase + " said Fred"+ "\n")
     if(c1 == 'Shaggy'):
         if(c2 == 'Scooby Doo'):
-            file.write(c1 + " and " + c2 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house"+ "\n")
+            file.write(c1 + " and " + c2 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c4 +
+                       " and " + c5 + " went to " + monsterName + "s house"+ "\n")
         elif(c3 == 'Scooby Doo'):
-            file.write(c1 + " and " + c3 + " went to the " + nouns + " " + c2 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house"+ "\n")
+            file.write(c1 + " and " + c3 + " went to the " + nouns + ", " + c2 + " " + verb2 + ", and " + c4 +
+                       " and " + c5 + " went to " + monsterName + "s house"+ "\n")
         elif (c4 == 'Scooby Doo'):
-            file.write(c1 + " and " + c4 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c2 + " and " + c5 + " went to " + monsterName + "s house" + "\n")
+            file.write(c1 + " and " + c4 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c2 +
+                       " and " + c5 + " went to " + monsterName + "s house" + "\n")
         elif (c5 == 'Scooby Doo'):
-            file.write(c1 + " and " + c5 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c2 + " went to " + monsterName + "s house" + "\n")
+            file.write(c1 + " and " + c5 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c4 +
+                       " and " + c2 + " went to " + monsterName + "s house" + "\n")
     elif (c2 == 'Shaggy'):
         if (c1 == 'Scooby Doo'):
-            file.write(c1 + " and " + c2 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house" + "\n")
+            file.write(c1 + " and " + c2 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c4 +
+                       " and " + c5 + " went to " + monsterName + "s house" + "\n")
         elif (c3 == 'Scooby Doo'):
-            file.write(c2 + " and " + c3 + " went to the " + nouns + " " + c1 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house" + "\n")
+            file.write(c2 + " and " + c3 + " went to the " + nouns + ", " + c1 + " " + verb2 + ", and " + c4 +
+                       " and " + c5 + " went to " + monsterName + "s house" + "\n")
         elif (c4 == 'Scooby Doo'):
-            file.write(c2 + " and " + c4 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c1 + " and " + c5 + " went to " + monsterName + "s house" + "\n")
+            file.write(c2 + " and " + c4 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c1 +
+                       " and " + c5 + " went to " + monsterName + "s house" + "\n")
         elif (c5 == 'Scooby Doo'):
-            file.write(c2 + " and " + c5 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c1 + " went to " + monsterName + "s house" + "\n")
+            file.write(c2 + " and " + c5 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c4 +
+                       " and " + c1 + " went to " + monsterName + "s house" + "\n")
     else:
-        file.write(c1 + " and " + c2 + " went to the " + nouns + " " + c3 + " " + verb2 + " and " + c4 + " and " + c5 + " went to " + monsterName + "s house" + "\n")
+        file.write(c1 + " and " + c2 + " went to the " + nouns + ", " + c3 + " " + verb2 + ", and " + c4 + " and " + c5 + " went to " + monsterName + "s house" + "\n")
     file.write(c4 + " and " + c5 + " found a " + clue + " on the table in " + monsterName + "s house."+ "\n")
     file.write("The " + i + " " + action + " " + c1 + ", " + c2 + " and " + c3+ "\n")
-    file.write("Velma " + verb4+ "\n")
+    file.write("Velma tripped \n")
     file.write(velmaCatchPhrase + " said Velma"+ "\n")
     file.write(monsterName + " handed Velma her " + adjectiveToUse2 + " glasses"+ "\n")
     file.write("Stop! " + verb5 + " "+ c3+ "\n")

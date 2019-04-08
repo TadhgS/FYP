@@ -30,12 +30,13 @@ cursor = connect.cursor()
 #                name text,
 #                clue text
 #                )""")
-#cursor.execute("""CREATE TABLE words(
-#                word text,
-#                type text,
-#                local text,
-#                freq integer
-#                )""")
+
+cursor.execute("""CREATE TABLE words(
+                word text,
+                type text,
+                local text,
+                freq integer
+                )""")
 
 #cursor.execute("""CREATE TABLE characters (
 #                name text,

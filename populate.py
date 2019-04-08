@@ -80,7 +80,9 @@ def pop(i): # pupulate the words table
 
     for x in trueNounsp:
         i = trueNounsp.index(x)
-        database.cursor.execute("INSERT INTO words VALUES (?, ?, ?, ?)", (x, 'NNS', locations[loc], nounpCount[i]))
+        database.cursor.execute(
+            "INSERT INTO words VALUES (?, ?, ?, ?)",
+                (x, 'NNS', locations[loc], nounpCount[i]))
 
     pnounCount = []
     truepNouns = []
@@ -208,7 +210,9 @@ def pop(i): # pupulate the words table
 
     for x in trueUseless:
         i = trueUseless.index(x)
-        database.cursor.execute("INSERT INTO words VALUES (?, ?, ?, ?)", (x, 'PU', locations[loc], uselessCount[i]))
+        database.cursor.execute(
+            "INSERT INTO words VALUES (?, ?, ?, ?)",
+                (x, 'PU', locations[loc], uselessCount[i]))
 
     uuWCount = []
     trueuuW = []

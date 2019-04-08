@@ -12,7 +12,10 @@ def scrape():
             a = "0" + str(i)
         else:
             a = str(i)
-        url = requests.get("https://www.springfieldspringfield.co.uk/view_episode_scripts.php?tv-show=scooby-doo-where-are-you-1969&episode=s01e"+ a)
+        url = requests.get(
+            "https://www.springfieldspringfield.co.uk/"
+            "view_episode_scripts.php?tv-show=scooby-doo-where-are-you-1969"
+            "&episode=s01e"+ a)
 
         bSoup = BeautifulSoup(url.content, 'html.parser')
 
